@@ -9,7 +9,7 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 apps:
   httpstat:
-    command: httpstat
+    command: httpstat.py
 
 parts:
   python:
@@ -17,5 +17,5 @@ parts:
     python-version: python2
     stage-packages: [curl]
   httpstat:
-    source: .
+    source: ./httpstat
     plugin: dump
