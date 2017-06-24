@@ -18,10 +18,12 @@ parts:
     plugin: dump
     after: [python]
   python:
-    source: https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz #work with python version 2.7.5 and later (raise "IOError invalid Python installation unable to open /snap/httpstat/x1/usr/include/python2.7/pyconfig.h (No such file or directory)" with 2.7.4 and earlier)
     plugin: autotools
+    source: https://github.com/python/cpython.git
+    source-type: git
+    source-tag: v2.7.12
     configflags: [--prefix=/usr]
     build-packages: [libssl-dev]
     stage-packages: [curl]
-    prime:
-      - -usr/include #python 2.7.4 and earlier work well without that line (seem work well without above 2.7.4 too)
+    prime:  #raise "IOError invalid Python installation unable to open /snap/httpstat/x1/usr/include/python2.7/pyconfig.h (No such file or directory)" with 2.7.4 and earlier
+      - -usr/include  #python 2.7.4 and earlier work well without that line (seem work well without above 2.7.4 too)
